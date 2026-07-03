@@ -3,438 +3,309 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>狭山ヶ丘高等学校 放課後個別相談会 空き時間一覧</title>
+<title>狭山ヶ丘学園 平日個別相談会 空き時間一覧</title>
 <style>
     :root {
-        --purple: #5A2D82;
-        --purple-light: #7B4CAE;
-        --purple-pale: #F6F2FA;
-        --purple-border: #E2D5EE;
-        --white: #FFFFFF;
-        --bg: #F4F5F7;
-        --ink: #2C2A2E;
-        --muted: #6C6870;
-        --border: #E1DFE3;
-        --table-stripe: #FAF8FC;
-        --shadow: 0 4px 12px rgba(90, 45, 130, 0.05);
-        --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.04);
-        --radius: 8px;
+        --bg: #F7F5F0;
+        --ink: #1F2937;
+        --accent: #E2723A;
+        --accent-soft: #FBE6D9;
+        --card-bg: #FFFFFF;
+        --muted: #8C8678;
+        --border: #E6E1D6;
     }
-    
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
+    * { box-sizing: border-box; }
     body {
+        margin: 0;
+        padding: 0 0 80px;
         background: var(--bg);
         color: var(--ink);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
-        line-height: 1.6;
-        font-size: 15px;
-        -webkit-font-smoothing: antialiased;
+        font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+        line-height: 1.7;
     }
-
-    /* ===== ヘッダー ===== */
-    .site-header {
-        background: var(--white);
-        border-bottom: 4px solid var(--purple);
-        padding: 18px 24px;
-        box-shadow: var(--shadow-sm);
-    }
-    .site-header-inner {
-        max-width: 1000px;
+    .container {
+        max-width: 920px;
         margin: 0 auto;
-    }
-    .site-header .school-name {
-        font-size: 1.2rem;
-        font-weight: 800;
-        color: var(--purple);
-        letter-spacing: 0.03em;
-    }
-    .site-header .school-name-en {
-        font-size: 0.72rem;
-        color: var(--muted);
-        display: block;
-        letter-spacing: 0.06em;
-        margin-top: 2px;
-        font-weight: 500;
-    }
-
-    /* ===== パンくず ===== */
-    .breadcrumb {
-        background: var(--purple-pale);
-        padding: 10px 24px;
-        font-size: 0.8rem;
-        color: var(--muted);
-        border-bottom: 1px solid var(--purple-border);
-    }
-    .breadcrumb-inner {
-        max-width: 1000px;
-        margin: 0 auto;
-    }
-    .breadcrumb a {
-        color: var(--purple);
-        text-decoration: none;
-        font-weight: 500;
-    }
-    .breadcrumb a:hover {
-        text-decoration: underline;
-    }
-
-    /* ===== メインレイアウト ===== */
-    .main-wrap {
-        max-width: 1000px;
-        margin: 40px auto;
         padding: 0 24px;
     }
-
-    /* ===== ページタイトル ===== */
-    .page-title-block {
-        margin-bottom: 32px;
+    .hero {
+        background: var(--ink);
+        color: #fff;
+        padding: 56px 24px 60px;
+        margin-bottom: 48px;
     }
-    .page-title-block .category-label {
+    .hero-inner {
+        max-width: 920px;
+        margin: 0 auto;
+    }
+    .hero .eyebrow {
         display: inline-block;
-        background: var(--purple-pale);
-        color: var(--purple);
-        border: 1px solid var(--purple-border);
-        size: 11px;
         font-size: 0.75rem;
+        letter-spacing: 0.18em;
+        color: var(--accent);
         font-weight: 700;
-        padding: 4px 14px;
-        border-radius: 4px;
-        margin-bottom: 12px;
-        letter-spacing: 0.05em;
+        margin-bottom: 14px;
     }
-    .page-title-block h1 {
-        font-size: 1.8rem;
-        font-weight: 800;
-        color: var(--ink);
-        position: relative;
-        padding-bottom: 12px;
-        letter-spacing: 0.01em;
+    .hero h1 {
+        font-size: 1.9rem;
+        margin: 0 0 10px;
+        letter-spacing: 0.02em;
+        line-height: 1.5;
     }
-    .page-title-block h1::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 60px;
-        height: 4px;
-        background: var(--purple);
-        border-radius: 2px;
-    }
-
-    /* ===== 案内ボックス ===== */
-    .info-box {
-        background: var(--white);
-        border: 1px solid var(--border);
-        border-left: 5px solid var(--purple);
-        border-radius: var(--radius);
-        padding: 20px 24px;
-        margin-bottom: 24px;
-        font-size: 0.95rem;
-        box-shadow: var(--shadow);
-    }
-    .info-box p {
+    .hero p {
         margin: 0;
-        line-height: 1.8;
-    }
-    .info-box .red {
-        color: #D32F2F;
-        font-weight: 700;
-        background: linear-gradient(transparent 60%, #FFEBEE 60%);
-    }
-
-    /* ===== 受付情報テーブル ===== */
-    .info-table {
-        width: 100%;
-        border-collapse: separate;
-        border-spacing: 0;
-        margin-bottom: 24px;
-        background: var(--white);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        overflow: hidden;
-        box-shadow: var(--shadow);
-    }
-    .info-table th {
-        background: var(--purple-pale);
-        color: var(--purple);
-        padding: 14px 20px;
         font-size: 0.9rem;
-        font-weight: 700;
-        text-align: left;
-        width: 180px;
-        border-bottom: 1px solid var(--border);
-        border-right: 1px solid var(--border);
+        color: #D8D5CC;
     }
-    .info-table td {
-        padding: 14px 20px;
-        font-size: 0.9rem;
-        border-bottom: 1px solid var(--border);
-        vertical-align: middle;
-    }
-    .info-table tr:last-child th,
-    .info-table tr:last-child td {
-        border-bottom: none;
-    }
-    .info-table tr:nth-child(even) td {
-        background: var(--table-stripe);
-    }
-
-    /* ===== PDFダウンロード ===== */
     .resource-card {
         display: flex;
         align-items: center;
         gap: 16px;
-        background: var(--white);
-        border: 1px solid var(--purple-border);
-        border-radius: var(--radius);
-        padding: 16px 24px;
-        margin-bottom: 40px;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--accent);
+        border-radius: 6px;
+        padding: 16px 20px;
+        margin: 0 0 28px;
         text-decoration: none;
         color: var(--ink);
-        box-shadow: var(--shadow);
-        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        transition: box-shadow 0.15s ease;
     }
     .resource-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(90, 45, 130, 0.1);
-        border-color: var(--purple);
+        box-shadow: 0 4px 14px rgba(226, 114, 58, 0.15);
     }
     .resource-icon {
         flex-shrink: 0;
         width: 44px;
         height: 44px;
-        border-radius: 6px;
-        background: #E53935;
-        color: var(--white);
+        border-radius: 8px;
+        background: var(--accent-soft);
+        color: var(--accent);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         font-weight: 800;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.02em;
     }
     .resource-info {
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
         min-width: 0;
     }
     .resource-title {
         font-size: 0.95rem;
         font-weight: 700;
-        color: var(--purple);
-        display: flex;
-        align-items: center;
-        gap: 4px;
+        color: var(--ink);
     }
-    .resource-meta {
+    .resource-title .ext-icon {
         font-size: 0.8rem;
         color: var(--muted);
-        margin-top: 4px;
+        margin-left: 2px;
+    }
+    .resource-meta {
+        font-size: 0.78rem;
+        color: var(--muted);
     }
     .resource-button {
         flex-shrink: 0;
-        background: var(--purple);
-        color: var(--white);
-        font-size: 0.85rem;
+        border: 1.5px solid var(--accent);
+        color: var(--accent);
+        font-size: 0.82rem;
         font-weight: 700;
         padding: 8px 20px;
-        border-radius: 6px;
+        border-radius: 30px;
         white-space: nowrap;
-        transition: background 0.2s;
     }
     .resource-card:hover .resource-button {
-        background: var(--purple-light);
+        background: var(--accent);
+        color: #fff;
     }
-
-    /* ===== 月ブロック ===== */
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+        margin-bottom: 56px;
+    }
+    .info-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 22px 20px;
+        position: relative;
+    }
+    .info-card .label {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        display: block;
+    }
+    .info-card .detail {
+        font-size: 0.84rem;
+        color: var(--muted);
+        line-height: 1.8;
+        margin: 0;
+    }
+    .info-card .detail strong {
+        color: var(--ink);
+    }
+    .info-card .caution {
+        display: block;
+        margin-top: 10px;
+        font-size: 0.78rem;
+        color: var(--muted);
+    }
     .month-block {
-        margin-bottom: 48px;
+        margin-bottom: 44px;
     }
     .month-heading {
-        border-left: 5px solid var(--purple);
-        padding: 4px 12px;
-        margin-bottom: 16px;
+        border-bottom: 2px solid var(--ink);
+        padding-bottom: 10px;
+        margin-bottom: 18px;
+    }
+    .month-heading .eyebrow {
+        display: block;
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        color: var(--accent);
+        font-weight: 700;
+        margin-bottom: 4px;
     }
     .month-heading h2 {
-        font-size: 1.3rem;
-        font-weight: 800;
-        color: var(--ink);
-        letter-spacing: 0.02em;
+        font-size: 1.25rem;
+        margin: 0;
+        font-weight: 700;
     }
-
-    /* ===== 日付グリッド ===== */
     .day-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        gap: 12px;
+        gap: 10px;
     }
     .day-card {
-        background: var(--white);
+        background: var(--card-bg);
         border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 14px;
-        min-height: 110px;
-        display: flex;
-        flex-direction: column;
-        box-shadow: var(--shadow-sm);
-        transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .day-card:not(.empty):hover {
-        border-color: var(--purple-border);
-        box-shadow: 0 4px 10px rgba(90, 45, 130, 0.08);
+        border-radius: 4px;
+        padding: 12px;
+        min-height: 90px;
     }
     .day-card.empty {
-        background: #ECEBED;
-        background-image: linear-gradient(135deg, transparent 45%, rgba(0,0,0,0.03) 45%, rgba(0,0,0,0.03) 55%, transparent 55%);
-        background-size: 8px 8px;
-        border-color: var(--border);
-        box-shadow: none;
-    }
-    .day-card.weekend:not(.empty) {
-        background: #FDFBFF;
-        border-color: rgba(90, 45, 130, 0.15);
+        background: transparent;
+        border-style: dashed;
+        opacity: 0.5;
     }
     .day-card.weekend .day-num {
-        color: var(--purple-light);
+        color: var(--accent);
     }
-    
     .day-header {
         display: flex;
         align-items: baseline;
-        justify-content: space-between;
-        margin-bottom: 10px;
-        border-bottom: 1px solid var(--border);
-        padding-bottom: 6px;
-    }
-    .day-card.empty .day-header {
-        border-bottom-color: rgba(0,0,0,0.06);
+        gap: 6px;
+        margin-bottom: 8px;
     }
     .day-num {
         font-size: 1.3rem;
-        font-weight: 800;
-        color: var(--ink);
-    }
-    .day-card.empty .day-num,
-    .day-card.empty .weekday {
-        color: #9A959F;
+        font-weight: 700;
     }
     .weekday {
         font-size: 0.8rem;
-        font-weight: 700;
         color: var(--muted);
     }
-    
     .slots {
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
         gap: 4px;
-        flex-grow: 1;
     }
     .slot {
-        background: var(--purple);
-        color: var(--white);
-        font-size: 0.75rem;
-        padding: 3px 6px;
-        border-radius: 4px;
-        font-weight: 700;
-        text-align: center;
-        letter-spacing: 0.02em;
-        box-shadow: 0 1px 3px rgba(90, 45, 130, 0.2);
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 0.78rem;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-weight: 600;
     }
     .no-slot {
-        font-size: 0.75rem;
-        color: #8A858F;
-        text-align: center;
-        margin: auto 0;
-        font-weight: 500;
+        font-size: 0.78rem;
+        color: var(--muted);
     }
-
-    /* ===== フッター ===== */
-    .page-footer {
-        margin-top: 80px;
-        padding: 32px 24px;
-        background: var(--purple);
-        color: rgba(255,255,255,0.7);
-        font-size: 0.8rem;
+    footer {
+        margin-top: 40px;
+        font-size: 0.78rem;
+        color: var(--muted);
         text-align: center;
-        letter-spacing: 0.04em;
-        font-weight: 500;
     }
-
-    /* ===== レスポンシブ対応 ===== */
-    @media (max-width: 650px) {
-        .site-header { padding: 14px 16px; }
-        .site-header .school-name { font-size: 1.05rem; }
-        .page-title-block h1 { font-size: 1.4rem; }
-        .main-wrap { margin: 24px auto; padding: 0 16px; }
-        .info-table, .info-box { padding: 16px; }
-        .info-table th { width: 100px; padding: 12px; font-size: 0.85rem; }
-        .info-table td { padding: 12px; font-size: 0.85rem; }
-        .resource-card { padding: 14px 16px; flex-wrap: wrap; gap: 12px; }
-        .resource-button { width: 100%; text-align: center; padding: 10px; }
-        .day-grid { grid-template-columns: repeat(auto-fill, minmax(105px, 1fr)); gap: 8px; }
-        .day-card { padding: 10px; min-height: 95px; }
-        .day-num { font-size: 1.15rem; }
+    @media (max-width: 600px) {
+        .hero {
+            padding: 36px 16px 40px;
+        }
+        .hero h1 {
+            font-size: 1.3rem;
+        }
+        .container {
+            padding: 0 16px;
+        }
+        .info-grid {
+            grid-template-columns: 1fr;
+        }
+        .resource-card {
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .resource-button {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+        }
+        .day-grid {
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        }
     }
 </style>
 </head>
 <body>
+    <div class="hero">
+        <div class="hero-inner">
+            <span class="eyebrow">SAYAMAGAOKA SENIOR HIGH SCHOOL</span>
+            <h1>狭山ヶ丘高等学校　放課後個別相談会</h1>
+            <p>予約状況一覧</p>
+        </div>
+    </div>
 
-    <header class="site-header">
-        <div class="site-header-inner">
-            <div>
-                <span class="school-name">狭山ヶ丘高等学校・付属中学校</span>
-                <span class="school-name-en">Sayamagaoka Senior High School / Affiliated Junior High School</span>
+    <div class="container">
+
+        <div class="info-grid">
+            <div class="info-card">
+                <span class="label">説明</span>
+                <p class="detail">
+                    カレンダーに表示されている時間が、現在ご予約いただける枠です。<br>
+                    ご希望の時間帯をお確かめのうえ、お電話にてご予約ください。
+                </p>
+            </div>
+            <div class="info-card">
+                <span class="label">受付時間</span>
+                <p class="detail">
+                    平日 <strong>9:00〜17:00</strong><br>
+                    <span style="color:#C0392B; font-weight:700;">お電話にてお申し込みください。</span><br><br>
+                    <strong>04-2962-3844</strong>
+                </p>
+                <span class="caution">※ 予約のタイミングにより、表示中の枠が既に埋まっている場合があります。あらかじめご了承ください。</span>
+            </div>
+            <div class="info-card">
+                <span class="label">当日について</span>
+                <p class="detail">
+                    上記の「個別相談用紙」をダウンロード・印刷し、必要事項を記入のうえご持参ください。<br>
+                    申し込み時間の<strong>10分前</strong>を目安にご来校ください。<br>
+                    会場：3号館1階 近藤ちよ先生記念室
+                </p>
             </div>
         </div>
-    </header>
-
-    <nav class="breadcrumb">
-        <div class="breadcrumb-inner">
-            <a href="https://www.sayamagaoka-h.ed.jp/">HOME</a> &rsaquo;
-            <a href="https://www.sayamagaoka-h.ed.jp/admission/">入試情報</a> &rsaquo;
-            放課後個別相談会 空き時間一覧
-        </div>
-    </nav>
-
-    <main class="main-wrap">
-
-        <div class="page-title-block">
-            <span class="category-label">入試情報</span>
-            <h1>放課後個別相談会 空き時間一覧</h1>
-        </div>
-
-        <div class="info-box">
-            <p>
-                カレンダーに表示されている時間が、現在ご予約いただける枠です。<br>
-                ご希望の時間帯をお確かめのうえ、<span class="red">お電話にてご予約ください。</span><br>
-                <span style="font-size: 0.85rem; color: var(--muted); display: inline-block; margin-top: 6px;">※ 掲載している空き状況は一定のタイミングで更新されるため、実際の状況と異なる場合があります。あらかじめご了承ください。</span>
-            </p>
-        </div>
-
-        <table class="info-table">
-            <tr>
-                <th>受付時間</th>
-                <td>平日 9:00〜17:00</td>
-            </tr>
-            <tr>
-                <th>お電話番号</th>
-                <td><strong style="font-size: 1.1rem; color: var(--purple);">04-2962-3844</strong></td>
-            </tr>
-            <tr>
-                <th>当日について</th>
-                <td>
-                    申し込み時間の<strong>10分前</strong>を目安にご来校ください。<br>
-                    <span style="color: var(--muted);">会場：3号館1階 近藤ちよ先生記念室</span>
-                </td>
-            </tr>
-        </table>
 
         <a class="resource-card" href="https://www.sayamagaoka-h.ed.jp/wp/wp-content/uploads/2026/05/入試個別相談用紙2026年度用.pdf" target="_blank" rel="noopener">
             <div class="resource-icon">PDF</div>
             <div class="resource-info">
-                <div class="resource-title">令和9年度生 入試個別相談用紙 <span style="font-size:0.75rem; font-weight:normal;">↗</span></div>
-                <div class="resource-meta">事前にダウンロード・印刷し、必要事項を記入のうえ当日ご持参ください</div>
+                <span class="resource-title">令和9年度生 入試個別相談用紙 <span class="ext-icon">↗</span></span>
+                <span class="resource-meta">事前にダウンロード・印刷し、当日ご持参ください</span>
             </div>
             <span class="resource-button">ダウンロード</span>
         </a>
@@ -442,7 +313,8 @@
         
         <div class="month-block">
             <div class="month-heading">
-                <h2>2026年 9月</h2>
+                <span class="eyebrow">SCHEDULE</span>
+                <h2>2026年9月</h2>
             </div>
             <div class="day-grid">
         
@@ -475,7 +347,7 @@
                     <span class="day-num">12</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -483,7 +355,7 @@
                     <span class="day-num">13</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -531,7 +403,7 @@
                     <span class="day-num">19</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -539,7 +411,7 @@
                     <span class="day-num">20</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -547,7 +419,7 @@
                     <span class="day-num">21</span>
                     <span class="weekday">月</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -555,7 +427,7 @@
                     <span class="day-num">22</span>
                     <span class="weekday">火</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -563,7 +435,7 @@
                     <span class="day-num">23</span>
                     <span class="weekday">水</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -571,7 +443,7 @@
                     <span class="day-num">24</span>
                     <span class="weekday">木</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -587,7 +459,7 @@
                     <span class="day-num">26</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -595,7 +467,7 @@
                     <span class="day-num">27</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -625,7 +497,8 @@
 
         <div class="month-block">
             <div class="month-heading">
-                <h2>2026年 10月</h2>
+                <span class="eyebrow">SCHEDULE</span>
+                <h2>2026年10月</h2>
             </div>
             <div class="day-grid">
         
@@ -634,7 +507,7 @@
                     <span class="day-num">01</span>
                     <span class="weekday">木</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -642,7 +515,7 @@
                     <span class="day-num">02</span>
                     <span class="weekday">金</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -650,7 +523,7 @@
                     <span class="day-num">03</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -658,7 +531,7 @@
                     <span class="day-num">04</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -706,7 +579,7 @@
                     <span class="day-num">10</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -714,7 +587,7 @@
                     <span class="day-num">11</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -722,7 +595,7 @@
                     <span class="day-num">12</span>
                     <span class="weekday">月</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -730,7 +603,7 @@
                     <span class="day-num">13</span>
                     <span class="weekday">火</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -738,7 +611,7 @@
                     <span class="day-num">14</span>
                     <span class="weekday">水</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -746,7 +619,7 @@
                     <span class="day-num">15</span>
                     <span class="weekday">木</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -754,7 +627,7 @@
                     <span class="day-num">16</span>
                     <span class="weekday">金</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -762,7 +635,7 @@
                     <span class="day-num">17</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -770,7 +643,7 @@
                     <span class="day-num">18</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -794,7 +667,7 @@
                     <span class="day-num">21</span>
                     <span class="weekday">水</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -802,7 +675,7 @@
                     <span class="day-num">22</span>
                     <span class="weekday">木</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -818,7 +691,7 @@
                     <span class="day-num">24</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -826,7 +699,7 @@
                     <span class="day-num">25</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -874,13 +747,14 @@
                     <span class="day-num">31</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             </div></div>
 
         <div class="month-block">
             <div class="month-heading">
-                <h2>2026年 11月</h2>
+                <span class="eyebrow">SCHEDULE</span>
+                <h2>2026年11月</h2>
             </div>
             <div class="day-grid">
         
@@ -889,7 +763,7 @@
                     <span class="day-num">01</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -905,7 +779,7 @@
                     <span class="day-num">03</span>
                     <span class="weekday">火</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -921,7 +795,7 @@
                     <span class="day-num">05</span>
                     <span class="weekday">木</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -937,7 +811,7 @@
                     <span class="day-num">07</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -945,7 +819,7 @@
                     <span class="day-num">08</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -961,7 +835,7 @@
                     <span class="day-num">10</span>
                     <span class="weekday">火</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -993,7 +867,7 @@
                     <span class="day-num">14</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1001,7 +875,7 @@
                     <span class="day-num">15</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -1049,7 +923,7 @@
                     <span class="day-num">21</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1057,7 +931,7 @@
                     <span class="day-num">22</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1065,7 +939,7 @@
                     <span class="day-num">23</span>
                     <span class="weekday">月</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -1089,7 +963,7 @@
                     <span class="day-num">26</span>
                     <span class="weekday">木</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -1105,7 +979,7 @@
                     <span class="day-num">28</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1113,7 +987,7 @@
                     <span class="day-num">29</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -1127,7 +1001,8 @@
 
         <div class="month-block">
             <div class="month-heading">
-                <h2>2026年 12月</h2>
+                <span class="eyebrow">SCHEDULE</span>
+                <h2>2026年12月</h2>
             </div>
             <div class="day-grid">
         
@@ -1168,7 +1043,7 @@
                     <span class="day-num">05</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1176,7 +1051,7 @@
                     <span class="day-num">06</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -1224,7 +1099,7 @@
                     <span class="day-num">12</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1232,7 +1107,7 @@
                     <span class="day-num">13</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -1280,7 +1155,7 @@
                     <span class="day-num">19</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1288,7 +1163,7 @@
                     <span class="day-num">20</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1296,7 +1171,7 @@
                     <span class="day-num">21</span>
                     <span class="weekday">月</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1304,7 +1179,7 @@
                     <span class="day-num">22</span>
                     <span class="weekday">火</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1312,7 +1187,7 @@
                     <span class="day-num">23</span>
                     <span class="weekday">水</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1320,7 +1195,7 @@
                     <span class="day-num">24</span>
                     <span class="weekday">木</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1328,7 +1203,7 @@
                     <span class="day-num">25</span>
                     <span class="weekday">金</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1336,7 +1211,7 @@
                     <span class="day-num">26</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1344,7 +1219,7 @@
                     <span class="day-num">27</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1352,7 +1227,7 @@
                     <span class="day-num">28</span>
                     <span class="weekday">月</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1360,7 +1235,7 @@
                     <span class="day-num">29</span>
                     <span class="weekday">火</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1368,7 +1243,7 @@
                     <span class="day-num">30</span>
                     <span class="weekday">水</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1376,13 +1251,14 @@
                     <span class="day-num">31</span>
                     <span class="weekday">木</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             </div></div>
 
         <div class="month-block">
             <div class="month-heading">
-                <h2>2027年 1月</h2>
+                <span class="eyebrow">SCHEDULE</span>
+                <h2>2027年1月</h2>
             </div>
             <div class="day-grid">
         
@@ -1391,7 +1267,7 @@
                     <span class="day-num">01</span>
                     <span class="weekday">金</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1399,7 +1275,7 @@
                     <span class="day-num">02</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1407,7 +1283,7 @@
                     <span class="day-num">03</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1415,7 +1291,7 @@
                     <span class="day-num">04</span>
                     <span class="weekday">月</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1423,16 +1299,14 @@
                     <span class="day-num">05</span>
                     <span class="weekday">火</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             </div></div>
 
 
-    </main>
-
-    <footer class="page-footer">
-        © 学校法人 狭山ヶ丘学園 狭山ヶ丘高等学校・付属中学校
-    </footer>
-
+        <footer>
+            ※ 掲載している空き状況は一定のタイミングで更新されるため、実際の状況と異なる場合があります。あらかじめご了承ください。
+        </footer>
+    </div>
 </body>
 </html>
