@@ -3,309 +3,389 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>狭山ヶ丘学園 平日個別相談会 空き時間一覧</title>
+<title>狭山ヶ丘高等学校 放課後個別相談会 空き時間一覧</title>
 <style>
     :root {
-        --bg: #F7F5F0;
-        --ink: #1F2937;
-        --accent: #E2723A;
-        --accent-soft: #FBE6D9;
-        --card-bg: #FFFFFF;
-        --muted: #8C8678;
-        --border: #E6E1D6;
+        --purple: #6B3FA0;
+        --purple-light: #8B5CC8;
+        --purple-pale: #F3EEF9;
+        --purple-border: #D4B8F0;
+        --white: #FFFFFF;
+        --bg: #F8F8F8;
+        --ink: #333333;
+        --muted: #777777;
+        --border: #E0E0E0;
+        --table-stripe: #F9F6FD;
     }
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-        margin: 0;
-        padding: 0 0 80px;
         background: var(--bg);
         color: var(--ink);
-        font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+        font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", "Meiryo", sans-serif;
         line-height: 1.7;
+        font-size: 15px;
     }
-    .container {
-        max-width: 920px;
+
+    /* ===== ヘッダー ===== */
+    .site-header {
+        background: var(--white);
+        border-bottom: 3px solid var(--purple);
+        padding: 14px 24px;
+    }
+    .site-header-inner {
+        max-width: 960px;
         margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .site-header .school-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--purple);
+        letter-spacing: 0.02em;
+    }
+    .site-header .school-name-en {
+        font-size: 0.7rem;
+        color: var(--muted);
+        display: block;
+        letter-spacing: 0.05em;
+    }
+
+    /* ===== パンくず ===== */
+    .breadcrumb {
+        background: var(--purple-pale);
+        padding: 8px 24px;
+        font-size: 0.78rem;
+        color: var(--muted);
+        border-bottom: 1px solid var(--purple-border);
+    }
+    .breadcrumb-inner {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+    .breadcrumb a {
+        color: var(--purple);
+        text-decoration: none;
+    }
+    .breadcrumb a:hover {
+        text-decoration: underline;
+    }
+
+    /* ===== メインレイアウト ===== */
+    .main-wrap {
+        max-width: 960px;
+        margin: 32px auto;
         padding: 0 24px;
     }
-    .hero {
-        background: var(--ink);
-        color: #fff;
-        padding: 56px 24px 60px;
-        margin-bottom: 48px;
+
+    /* ===== ページタイトル ===== */
+    .page-title-block {
+        margin-bottom: 28px;
     }
-    .hero-inner {
-        max-width: 920px;
-        margin: 0 auto;
-    }
-    .hero .eyebrow {
+    .page-title-block .category-label {
         display: inline-block;
+        background: var(--purple);
+        color: var(--white);
         font-size: 0.75rem;
-        letter-spacing: 0.18em;
-        color: var(--accent);
         font-weight: 700;
-        margin-bottom: 14px;
+        padding: 3px 12px;
+        border-radius: 2px;
+        margin-bottom: 10px;
+        letter-spacing: 0.05em;
     }
-    .hero h1 {
-        font-size: 1.9rem;
-        margin: 0 0 10px;
+    .page-title-block h1 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--ink);
+        border-bottom: 2px solid var(--purple);
+        padding-bottom: 10px;
         letter-spacing: 0.02em;
-        line-height: 1.5;
     }
-    .hero p {
-        margin: 0;
+
+    /* ===== 案内ボックス ===== */
+    .info-box {
+        background: var(--purple-pale);
+        border: 1px solid var(--purple-border);
+        border-left: 4px solid var(--purple);
+        border-radius: 4px;
+        padding: 18px 20px;
+        margin-bottom: 20px;
         font-size: 0.9rem;
-        color: #D8D5CC;
     }
+    .info-box p {
+        margin: 0;
+        line-height: 1.8;
+    }
+    .info-box .red {
+        color: #C0392B;
+        font-weight: 700;
+    }
+
+    /* ===== 受付情報テーブル ===== */
+    .info-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 28px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    .info-table th {
+        background: var(--purple);
+        color: var(--white);
+        padding: 10px 16px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-align: left;
+        width: 160px;
+    }
+    .info-table td {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+    }
+    .info-table tr:last-child td {
+        border-bottom: none;
+    }
+    .info-table tr:nth-child(even) td {
+        background: var(--table-stripe);
+    }
+
+    /* ===== PDFダウンロード ===== */
     .resource-card {
         display: flex;
         align-items: center;
-        gap: 16px;
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        border-left: 4px solid var(--accent);
-        border-radius: 6px;
-        padding: 16px 20px;
-        margin: 0 0 28px;
+        gap: 14px;
+        background: var(--white);
+        border: 1px solid var(--purple-border);
+        border-radius: 4px;
+        padding: 14px 18px;
+        margin-bottom: 32px;
         text-decoration: none;
         color: var(--ink);
-        transition: box-shadow 0.15s ease;
+        transition: background 0.15s;
     }
     .resource-card:hover {
-        box-shadow: 0 4px 14px rgba(226, 114, 58, 0.15);
+        background: var(--purple-pale);
     }
     .resource-icon {
         flex-shrink: 0;
-        width: 44px;
-        height: 44px;
-        border-radius: 8px;
-        background: var(--accent-soft);
-        color: var(--accent);
+        width: 40px;
+        height: 40px;
+        border-radius: 4px;
+        background: var(--purple);
+        color: var(--white);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.7rem;
+        font-size: 0.65rem;
         font-weight: 800;
         letter-spacing: 0.02em;
     }
     .resource-info {
         flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
         min-width: 0;
     }
     .resource-title {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         font-weight: 700;
-        color: var(--ink);
-    }
-    .resource-title .ext-icon {
-        font-size: 0.8rem;
-        color: var(--muted);
-        margin-left: 2px;
+        color: var(--purple);
     }
     .resource-meta {
-        font-size: 0.78rem;
+        font-size: 0.75rem;
         color: var(--muted);
+        margin-top: 2px;
     }
     .resource-button {
         flex-shrink: 0;
-        border: 1.5px solid var(--accent);
-        color: var(--accent);
-        font-size: 0.82rem;
+        background: var(--purple);
+        color: var(--white);
+        font-size: 0.8rem;
         font-weight: 700;
-        padding: 8px 20px;
-        border-radius: 30px;
+        padding: 7px 18px;
+        border-radius: 3px;
         white-space: nowrap;
     }
     .resource-card:hover .resource-button {
-        background: var(--accent);
-        color: #fff;
+        background: var(--purple-light);
     }
-    .info-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 16px;
-        margin-bottom: 56px;
-    }
-    .info-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        border-radius: 4px;
-        padding: 22px 20px;
-        position: relative;
-    }
-    .info-card .label {
-        font-size: 1rem;
-        font-weight: 700;
-        margin-bottom: 8px;
-        display: block;
-    }
-    .info-card .detail {
-        font-size: 0.84rem;
-        color: var(--muted);
-        line-height: 1.8;
-        margin: 0;
-    }
-    .info-card .detail strong {
-        color: var(--ink);
-    }
-    .info-card .caution {
-        display: block;
-        margin-top: 10px;
-        font-size: 0.78rem;
-        color: var(--muted);
-    }
+
+    /* ===== 月ブロック ===== */
     .month-block {
-        margin-bottom: 44px;
+        margin-bottom: 40px;
     }
     .month-heading {
-        border-bottom: 2px solid var(--ink);
-        padding-bottom: 10px;
-        margin-bottom: 18px;
-    }
-    .month-heading .eyebrow {
-        display: block;
-        font-size: 0.7rem;
-        letter-spacing: 0.18em;
-        color: var(--accent);
-        font-weight: 700;
-        margin-bottom: 4px;
+        background: var(--purple);
+        color: var(--white);
+        padding: 8px 16px;
+        border-radius: 3px 3px 0 0;
+        margin-bottom: 12px;
     }
     .month-heading h2 {
-        font-size: 1.25rem;
-        margin: 0;
+        font-size: 1rem;
         font-weight: 700;
+        letter-spacing: 0.05em;
     }
+
+    /* ===== 日付グリッド ===== */
     .day-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 8px;
     }
     .day-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        border-radius: 4px;
-        padding: 12px;
-        min-height: 90px;
+        background: var(--white);
+        border: 1px solid var(--purple-border);
+        border-radius: 3px;
+        padding: 10px 12px;
+        min-height: 85px;
     }
     .day-card.empty {
-        background: transparent;
-        border-style: dashed;
-        opacity: 0.5;
+        background: var(--bg);
+        border-color: var(--border);
+        opacity: 0.6;
     }
     .day-card.weekend .day-num {
-        color: var(--accent);
+        color: var(--purple);
     }
     .day-header {
         display: flex;
         align-items: baseline;
-        gap: 6px;
-        margin-bottom: 8px;
+        gap: 5px;
+        margin-bottom: 7px;
+        border-bottom: 1px solid var(--purple-border);
+        padding-bottom: 5px;
+    }
+    .day-card.empty .day-header {
+        border-bottom-color: var(--border);
     }
     .day-num {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         font-weight: 700;
+        color: var(--ink);
     }
     .weekday {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         color: var(--muted);
     }
     .slots {
         display: flex;
         flex-wrap: wrap;
-        gap: 4px;
+        gap: 3px;
+        margin-top: 4px;
     }
     .slot {
-        background: var(--accent-soft);
-        color: var(--accent);
-        font-size: 0.78rem;
-        padding: 2px 6px;
-        border-radius: 3px;
+        background: var(--purple-pale);
+        color: var(--purple);
+        font-size: 0.72rem;
+        padding: 2px 5px;
+        border-radius: 2px;
         font-weight: 600;
+        border: 1px solid var(--purple-border);
     }
     .no-slot {
-        font-size: 0.78rem;
+        font-size: 0.75rem;
         color: var(--muted);
     }
-    footer {
-        margin-top: 40px;
-        font-size: 0.78rem;
-        color: var(--muted);
+
+    /* ===== フッター ===== */
+    .page-footer {
+        margin-top: 48px;
+        padding: 20px 24px;
+        background: var(--purple);
+        color: rgba(255,255,255,0.8);
+        font-size: 0.75rem;
         text-align: center;
     }
+
+    /* ===== スマホ対応 ===== */
     @media (max-width: 600px) {
-        .hero {
-            padding: 36px 16px 40px;
+        .site-header .school-name {
+            font-size: 0.95rem;
         }
-        .hero h1 {
-            font-size: 1.3rem;
+        .page-title-block h1 {
+            font-size: 1.25rem;
         }
-        .container {
-            padding: 0 16px;
-        }
-        .info-grid {
-            grid-template-columns: 1fr;
+        .info-table th {
+            width: 100px;
         }
         .resource-card {
             flex-wrap: wrap;
-            gap: 12px;
         }
         .resource-button {
             width: 100%;
             text-align: center;
-            padding: 10px;
+            padding: 8px;
         }
         .day-grid {
             grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        }
+        .main-wrap {
+            padding: 0 12px;
         }
     }
 </style>
 </head>
 <body>
-    <div class="hero">
-        <div class="hero-inner">
-            <span class="eyebrow">SAYAMAGAOKA SENIOR HIGH SCHOOL</span>
-            <h1>狭山ヶ丘高等学校　放課後個別相談会</h1>
-            <p>予約状況一覧</p>
+
+    <header class="site-header">
+        <div class="site-header-inner">
+            <div>
+                <span class="school-name">狭山ヶ丘高等学校・付属中学校</span>
+                <span class="school-name-en">Sayamagaoka Senior High School / Affiliated Junior High School</span>
+            </div>
         </div>
-    </div>
+    </header>
 
-    <div class="container">
+    <nav class="breadcrumb">
+        <div class="breadcrumb-inner">
+            <a href="https://www.sayamagaoka-h.ed.jp/">HOME</a> &rsaquo;
+            <a href="https://www.sayamagaoka-h.ed.jp/admission/">入試情報</a> &rsaquo;
+            放課後個別相談会 空き時間一覧
+        </div>
+    </nav>
 
-        <div class="info-grid">
-            <div class="info-card">
-                <span class="label">説明</span>
-                <p class="detail">
-                    カレンダーに表示されている時間が、現在ご予約いただける枠です。<br>
-                    ご希望の時間帯をお確かめのうえ、お電話にてご予約ください。
-                </p>
-            </div>
-            <div class="info-card">
-                <span class="label">受付時間</span>
-                <p class="detail">
-                    平日 <strong>9:00〜17:00</strong><br>
-                    <span style="color:#C0392B; font-weight:700;">お電話にてお申し込みください。</span><br><br>
-                    <strong>04-2962-3844</strong>
-                </p>
-                <span class="caution">※ 予約のタイミングにより、表示中の枠が既に埋まっている場合があります。あらかじめご了承ください。</span>
-            </div>
-            <div class="info-card">
-                <span class="label">当日について</span>
-                <p class="detail">
-                    上記の「個別相談用紙」をダウンロード・印刷し、必要事項を記入のうえご持参ください。<br>
+    <main class="main-wrap">
+
+        <div class="page-title-block">
+            <span class="category-label">入試情報</span>
+            <h1>放課後個別相談会 空き時間一覧</h1>
+        </div>
+
+        <div class="info-box">
+            <p>
+                カレンダーに表示されている時間が、現在ご予約いただける枠です。<br>
+                ご希望の時間帯をお確かめのうえ、<span class="red">お電話にてご予約ください。</span><br>
+                ※ 掲載している空き状況は一定のタイミングで更新されるため、実際の状況と異なる場合があります。あらかじめご了承ください。
+            </p>
+        </div>
+
+        <table class="info-table">
+            <tr>
+                <th>受付時間</th>
+                <td>平日 9:00〜17:00</td>
+            </tr>
+            <tr>
+                <th>お電話番号</th>
+                <td><strong>04-2962-3844</strong></td>
+            </tr>
+            <tr>
+                <th>当日について</th>
+                <td>
                     申し込み時間の<strong>10分前</strong>を目安にご来校ください。<br>
                     会場：3号館1階 近藤ちよ先生記念室
-                </p>
-            </div>
-        </div>
+                </td>
+            </tr>
+        </table>
 
         <a class="resource-card" href="https://www.sayamagaoka-h.ed.jp/wp/wp-content/uploads/2026/05/入試個別相談用紙2026年度用.pdf" target="_blank" rel="noopener">
             <div class="resource-icon">PDF</div>
             <div class="resource-info">
-                <span class="resource-title">令和9年度生 入試個別相談用紙 <span class="ext-icon">↗</span></span>
-                <span class="resource-meta">事前にダウンロード・印刷し、当日ご持参ください</span>
+                <div class="resource-title">令和9年度生 入試個別相談用紙 ↗</div>
+                <div class="resource-meta">事前にダウンロード・印刷し、必要事項を記入のうえ当日ご持参ください</div>
             </div>
             <span class="resource-button">ダウンロード</span>
         </a>
@@ -313,7 +393,6 @@
         
         <div class="month-block">
             <div class="month-heading">
-                <span class="eyebrow">SCHEDULE</span>
                 <h2>2026年9月</h2>
             </div>
             <div class="day-grid">
@@ -497,7 +576,6 @@
 
         <div class="month-block">
             <div class="month-heading">
-                <span class="eyebrow">SCHEDULE</span>
                 <h2>2026年10月</h2>
             </div>
             <div class="day-grid">
@@ -753,7 +831,6 @@
 
         <div class="month-block">
             <div class="month-heading">
-                <span class="eyebrow">SCHEDULE</span>
                 <h2>2026年11月</h2>
             </div>
             <div class="day-grid">
@@ -1001,7 +1078,6 @@
 
         <div class="month-block">
             <div class="month-heading">
-                <span class="eyebrow">SCHEDULE</span>
                 <h2>2026年12月</h2>
             </div>
             <div class="day-grid">
@@ -1257,7 +1333,6 @@
 
         <div class="month-block">
             <div class="month-heading">
-                <span class="eyebrow">SCHEDULE</span>
                 <h2>2027年1月</h2>
             </div>
             <div class="day-grid">
@@ -1304,9 +1379,11 @@
             </div></div>
 
 
-        <footer>
-            ※ 掲載している空き状況は一定のタイミングで更新されるため、実際の状況と異なる場合があります。あらかじめご了承ください。
-        </footer>
-    </div>
+    </main>
+
+    <footer class="page-footer">
+        © 学校法人 狭山ヶ丘学園 狭山ヶ丘高等学校・付属中学校
+    </footer>
+
 </body>
 </html>
