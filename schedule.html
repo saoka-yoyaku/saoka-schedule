@@ -19,6 +19,8 @@
         --shadow: 0 4px 12px rgba(90, 45, 130, 0.05);
         --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.04);
         --radius: 8px;
+        --pdf-red: #E53935;
+        --pdf-red-dark: #D32F2F;
     }
     
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -58,27 +60,6 @@
         font-weight: 500;
     }
 
-    /* ===== パンくず ===== */
-    .breadcrumb {
-        background: var(--purple-pale);
-        padding: 10px 24px;
-        font-size: 0.8rem;
-        color: var(--muted);
-        border-bottom: 1px solid var(--purple-border);
-    }
-    .breadcrumb-inner {
-        max-width: 1000px;
-        margin: 0 auto;
-    }
-    .breadcrumb a {
-        color: var(--purple);
-        text-decoration: none;
-        font-weight: 500;
-    }
-    .breadcrumb a:hover {
-        text-decoration: underline;
-    }
-
     /* ===== メインレイアウト ===== */
     .main-wrap {
         max-width: 1000px;
@@ -95,7 +76,6 @@
         background: var(--purple-pale);
         color: var(--purple);
         border: 1px solid var(--purple-border);
-        size: 11px;
         font-size: 0.75rem;
         font-weight: 700;
         padding: 4px 14px;
@@ -205,7 +185,7 @@
         width: 44px;
         height: 44px;
         border-radius: 6px;
-        background: #E53935;
+        background: var(--pdf-red);
         color: var(--white);
         display: flex;
         align-items: center;
@@ -233,7 +213,7 @@
     }
     .resource-button {
         flex-shrink: 0;
-        background: var(--purple);
+        background: var(--pdf-red);
         color: var(--white);
         font-size: 0.85rem;
         font-weight: 700;
@@ -243,7 +223,7 @@
         transition: background 0.2s;
     }
     .resource-card:hover .resource-button {
-        background: var(--purple-light);
+        background: var(--pdf-red-dark);
     }
 
     /* ===== 月ブロック ===== */
@@ -265,7 +245,7 @@
     /* ===== 日付グリッド ===== */
     .day-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 12px;
     }
     .day-card {
@@ -324,24 +304,27 @@
         color: var(--muted);
     }
     
+    /* 時間表示エリア：PCでは2列に並べる */
     .slots {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
         flex-grow: 1;
     }
+    /* 淡い紫背景に濃い紫のテキスト */
     .slot {
-        background: var(--purple);
-        color: var(--white);
+        background: #F1EBF7;
+        color: var(--purple);
+        border: 1px solid #DBCDE8;
         font-size: 0.75rem;
-        padding: 3px 6px;
+        padding: 4px 2px;
         border-radius: 4px;
         font-weight: 700;
         text-align: center;
         letter-spacing: 0.02em;
-        box-shadow: 0 1px 3px rgba(90, 45, 130, 0.2);
     }
     .no-slot {
+        grid-column: span 2;
         font-size: 0.75rem;
         color: #8A858F;
         text-align: center;
@@ -372,9 +355,11 @@
         .info-table td { padding: 12px; font-size: 0.85rem; }
         .resource-card { padding: 14px 16px; flex-wrap: wrap; gap: 12px; }
         .resource-button { width: 100%; text-align: center; padding: 10px; }
-        .day-grid { grid-template-columns: repeat(auto-fill, minmax(105px, 1fr)); gap: 8px; }
+        .day-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; }
         .day-card { padding: 10px; min-height: 95px; }
         .day-num { font-size: 1.15rem; }
+        .slots { grid-template-columns: 1fr; }
+        .no-slot { grid-column: span 1; }
     }
 </style>
 </head>
@@ -388,14 +373,6 @@
             </div>
         </div>
     </header>
-
-    <nav class="breadcrumb">
-        <div class="breadcrumb-inner">
-            <a href="https://www.sayamagaoka-h.ed.jp/">HOME</a> &rsaquo;
-            <a href="https://www.sayamagaoka-h.ed.jp/admission/">入試情報</a> &rsaquo;
-            放課後個別相談会 空き時間一覧
-        </div>
-    </nav>
 
     <main class="main-wrap">
 
@@ -475,7 +452,7 @@
                     <span class="day-num">12</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -483,7 +460,7 @@
                     <span class="day-num">13</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -531,7 +508,7 @@
                     <span class="day-num">19</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -539,7 +516,7 @@
                     <span class="day-num">20</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -547,7 +524,7 @@
                     <span class="day-num">21</span>
                     <span class="weekday">月</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -555,7 +532,7 @@
                     <span class="day-num">22</span>
                     <span class="weekday">火</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -563,7 +540,7 @@
                     <span class="day-num">23</span>
                     <span class="weekday">水</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -571,7 +548,7 @@
                     <span class="day-num">24</span>
                     <span class="weekday">木</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -587,7 +564,7 @@
                     <span class="day-num">26</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -595,7 +572,7 @@
                     <span class="day-num">27</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -634,7 +611,7 @@
                     <span class="day-num">01</span>
                     <span class="weekday">木</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -642,7 +619,7 @@
                     <span class="day-num">02</span>
                     <span class="weekday">金</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -650,7 +627,7 @@
                     <span class="day-num">03</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -658,7 +635,7 @@
                     <span class="day-num">04</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -706,7 +683,7 @@
                     <span class="day-num">10</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -714,7 +691,7 @@
                     <span class="day-num">11</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -722,7 +699,7 @@
                     <span class="day-num">12</span>
                     <span class="weekday">月</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -730,7 +707,7 @@
                     <span class="day-num">13</span>
                     <span class="weekday">火</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -738,7 +715,7 @@
                     <span class="day-num">14</span>
                     <span class="weekday">水</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -746,7 +723,7 @@
                     <span class="day-num">15</span>
                     <span class="weekday">木</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -754,7 +731,7 @@
                     <span class="day-num">16</span>
                     <span class="weekday">金</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -762,7 +739,7 @@
                     <span class="day-num">17</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -770,7 +747,7 @@
                     <span class="day-num">18</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -794,7 +771,7 @@
                     <span class="day-num">21</span>
                     <span class="weekday">水</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -802,7 +779,7 @@
                     <span class="day-num">22</span>
                     <span class="weekday">木</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -818,7 +795,7 @@
                     <span class="day-num">24</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -826,7 +803,7 @@
                     <span class="day-num">25</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -874,7 +851,7 @@
                     <span class="day-num">31</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             </div></div>
 
@@ -889,7 +866,7 @@
                     <span class="day-num">01</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -905,7 +882,7 @@
                     <span class="day-num">03</span>
                     <span class="weekday">火</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -921,7 +898,7 @@
                     <span class="day-num">05</span>
                     <span class="weekday">木</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -937,7 +914,7 @@
                     <span class="day-num">07</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -945,7 +922,7 @@
                     <span class="day-num">08</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -961,7 +938,7 @@
                     <span class="day-num">10</span>
                     <span class="weekday">火</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -993,7 +970,7 @@
                     <span class="day-num">14</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1001,7 +978,7 @@
                     <span class="day-num">15</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -1049,7 +1026,7 @@
                     <span class="day-num">21</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1057,7 +1034,7 @@
                     <span class="day-num">22</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1065,7 +1042,7 @@
                     <span class="day-num">23</span>
                     <span class="weekday">月</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -1089,7 +1066,7 @@
                     <span class="day-num">26</span>
                     <span class="weekday">木</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -1105,7 +1082,7 @@
                     <span class="day-num">28</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1113,7 +1090,7 @@
                     <span class="day-num">29</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -1168,7 +1145,7 @@
                     <span class="day-num">05</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1176,7 +1153,7 @@
                     <span class="day-num">06</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -1224,7 +1201,7 @@
                     <span class="day-num">12</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1232,7 +1209,7 @@
                     <span class="day-num">13</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card">
@@ -1280,7 +1257,7 @@
                     <span class="day-num">19</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1288,7 +1265,7 @@
                     <span class="day-num">20</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1296,7 +1273,7 @@
                     <span class="day-num">21</span>
                     <span class="weekday">月</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1304,7 +1281,7 @@
                     <span class="day-num">22</span>
                     <span class="weekday">火</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1312,7 +1289,7 @@
                     <span class="day-num">23</span>
                     <span class="weekday">水</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1320,7 +1297,7 @@
                     <span class="day-num">24</span>
                     <span class="weekday">木</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1328,7 +1305,7 @@
                     <span class="day-num">25</span>
                     <span class="weekday">金</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1336,7 +1313,7 @@
                     <span class="day-num">26</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1344,7 +1321,7 @@
                     <span class="day-num">27</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1352,7 +1329,7 @@
                     <span class="day-num">28</span>
                     <span class="weekday">月</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1360,7 +1337,7 @@
                     <span class="day-num">29</span>
                     <span class="weekday">火</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1368,7 +1345,7 @@
                     <span class="day-num">30</span>
                     <span class="weekday">水</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1376,7 +1353,7 @@
                     <span class="day-num">31</span>
                     <span class="weekday">木</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             </div></div>
 
@@ -1391,7 +1368,7 @@
                     <span class="day-num">01</span>
                     <span class="weekday">金</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1399,7 +1376,7 @@
                     <span class="day-num">02</span>
                     <span class="weekday">土</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty weekend">
@@ -1407,7 +1384,7 @@
                     <span class="day-num">03</span>
                     <span class="weekday">日</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1415,7 +1392,7 @@
                     <span class="day-num">04</span>
                     <span class="weekday">月</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             
             <div class="day-card empty">
@@ -1423,7 +1400,7 @@
                     <span class="day-num">05</span>
                     <span class="weekday">火</span>
                 </div>
-                <div class="slots"><span class="no-slot">満席 / 受付終了</span></div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
             </div></div>
 
