@@ -246,16 +246,50 @@
     }
 
     /* ===== 日付グリッド ===== */
-    .day-grid {
+    /* 曜日ヘッダー（月曜始まり・7列固定） */
+    .weekday-header {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 12px;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 8px;
+        margin-bottom: 8px;
+    }
+    .weekday-header .wd {
+        text-align: center;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--muted);
+        padding: 6px 0;
+        background: var(--purple-pale);
+        border-radius: 4px;
+    }
+    .weekday-header .wd.sat,
+    .weekday-header .wd.sun {
+        color: var(--purple-light);
+    }
+    .day-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .week-row {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 8px;
+    }
+    .week-row.all-past {
+        display: none !important;
+    }
+    .spacer {
+        min-height: 110px;
+    }
+    .day-card.past {
+        visibility: hidden;
     }
     .day-card {
         background: var(--white);
         border: 1px solid var(--border);
         border-radius: var(--radius);
-        padding: 14px;
+        padding: 10px;
         min-height: 110px;
         display: flex;
         flex-direction: column;
@@ -358,7 +392,11 @@
         .info-table td { padding: 12px; font-size: 0.85rem; }
         .resource-card { padding: 14px 16px; flex-wrap: wrap; gap: 12px; }
         .resource-button { width: 100%; text-align: center; padding: 10px; }
-        .day-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; }
+        .weekday-header { display: none; }
+        .day-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; }
+        .week-row { display: contents; }
+        .spacer { display: none; }
+        .day-card.past { display: none; }
         .day-card { padding: 10px; min-height: 95px; }
         .day-num { font-size: 1.15rem; }
         .slots { grid-template-columns: 1fr; }
@@ -427,8 +465,58 @@
             <div class="month-heading">
                 <h2>2026年 10月</h2>
             </div>
+            <div class="weekday-header"><div class="wd">月</div><div class="wd">火</div><div class="wd">水</div><div class="wd">木</div><div class="wd">金</div><div class="wd sat">土</div><div class="wd sun">日</div></div>
             <div class="day-grid">
-        
+        <div class="week-row"><div class="spacer"></div><div class="spacer"></div><div class="spacer"></div>
+            <div class="day-card empty" data-date="2026-10-01">
+                <div class="day-header">
+                    <span class="day-num">01</span>
+                    <span class="weekday">木</span>
+                </div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
+            </div>
+            
+            <div class="day-card empty" data-date="2026-10-02">
+                <div class="day-header">
+                    <span class="day-num">02</span>
+                    <span class="weekday">金</span>
+                </div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
+            </div>
+            
+            <div class="day-card empty weekend" data-date="2026-10-03">
+                <div class="day-header">
+                    <span class="day-num">03</span>
+                    <span class="weekday">土</span>
+                </div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
+            </div>
+            
+            <div class="day-card empty weekend" data-date="2026-10-04">
+                <div class="day-header">
+                    <span class="day-num">04</span>
+                    <span class="weekday">日</span>
+                </div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
+            </div>
+            </div>
+<div class="week-row">
+            <div class="day-card empty" data-date="2026-10-05">
+                <div class="day-header">
+                    <span class="day-num">05</span>
+                    <span class="weekday">月</span>
+                </div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
+            </div>
+            
+            <div class="day-card empty" data-date="2026-10-06">
+                <div class="day-header">
+                    <span class="day-num">06</span>
+                    <span class="weekday">火</span>
+                </div>
+                <div class="slots"><span class="no-slot">空きなし</span></div>
+            </div>
+            
             <div class="day-card" data-date="2026-10-07">
                 <div class="day-header">
                     <span class="day-num">07</span>
@@ -468,7 +556,8 @@
                 </div>
                 <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
-            
+            </div>
+<div class="week-row">
             <div class="day-card empty" data-date="2026-10-12">
                 <div class="day-header">
                     <span class="day-num">12</span>
@@ -524,7 +613,8 @@
                 </div>
                 <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
-            
+            </div>
+<div class="week-row">
             <div class="day-card" data-date="2026-10-19">
                 <div class="day-header">
                     <span class="day-num">19</span>
@@ -580,7 +670,8 @@
                 </div>
                 <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
-            
+            </div>
+<div class="week-row">
             <div class="day-card" data-date="2026-10-26">
                 <div class="day-header">
                     <span class="day-num">26</span>
@@ -628,14 +719,16 @@
                 </div>
                 <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
-            </div></div>
+            <div class="spacer"></div></div>
+</div></div>
 
         <div class="month-block">
             <div class="month-heading">
                 <h2>2026年 11月</h2>
             </div>
+            <div class="weekday-header"><div class="wd">月</div><div class="wd">火</div><div class="wd">水</div><div class="wd">木</div><div class="wd">金</div><div class="wd sat">土</div><div class="wd sun">日</div></div>
             <div class="day-grid">
-        
+        <div class="week-row"><div class="spacer"></div><div class="spacer"></div><div class="spacer"></div><div class="spacer"></div><div class="spacer"></div><div class="spacer"></div>
             <div class="day-card empty weekend" data-date="2026-11-01">
                 <div class="day-header">
                     <span class="day-num">01</span>
@@ -643,7 +736,8 @@
                 </div>
                 <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
-            
+            </div>
+<div class="week-row">
             <div class="day-card" data-date="2026-11-02">
                 <div class="day-header">
                     <span class="day-num">02</span>
@@ -699,7 +793,8 @@
                 </div>
                 <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
-            
+            </div>
+<div class="week-row">
             <div class="day-card" data-date="2026-11-09">
                 <div class="day-header">
                     <span class="day-num">09</span>
@@ -755,7 +850,8 @@
                 </div>
                 <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
-            
+            </div>
+<div class="week-row">
             <div class="day-card" data-date="2026-11-16">
                 <div class="day-header">
                     <span class="day-num">16</span>
@@ -811,7 +907,8 @@
                 </div>
                 <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
-            
+            </div>
+<div class="week-row">
             <div class="day-card empty" data-date="2026-11-23">
                 <div class="day-header">
                     <span class="day-num">23</span>
@@ -867,7 +964,8 @@
                 </div>
                 <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
-            
+            </div>
+<div class="week-row">
             <div class="day-card" data-date="2026-11-30">
                 <div class="day-header">
                     <span class="day-num">30</span>
@@ -875,14 +973,16 @@
                 </div>
                 <div class="slots"><span class="slot">16:00</span><span class="slot">16:30</span><span class="slot">17:00</span><span class="slot">17:30</span><span class="slot">18:00</span><span class="slot">18:30</span></div>
             </div>
-            </div></div>
+            <div class="spacer"></div><div class="spacer"></div><div class="spacer"></div><div class="spacer"></div><div class="spacer"></div><div class="spacer"></div></div>
+</div></div>
 
         <div class="month-block">
             <div class="month-heading">
                 <h2>2026年 12月</h2>
             </div>
+            <div class="weekday-header"><div class="wd">月</div><div class="wd">火</div><div class="wd">水</div><div class="wd">木</div><div class="wd">金</div><div class="wd sat">土</div><div class="wd sun">日</div></div>
             <div class="day-grid">
-        
+        <div class="week-row"><div class="spacer"></div>
             <div class="day-card" data-date="2026-12-01">
                 <div class="day-header">
                     <span class="day-num">01</span>
@@ -930,7 +1030,8 @@
                 </div>
                 <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
-            
+            </div>
+<div class="week-row">
             <div class="day-card" data-date="2026-12-07">
                 <div class="day-header">
                     <span class="day-num">07</span>
@@ -986,7 +1087,8 @@
                 </div>
                 <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
-            
+            </div>
+<div class="week-row">
             <div class="day-card" data-date="2026-12-14">
                 <div class="day-header">
                     <span class="day-num">14</span>
@@ -1042,7 +1144,8 @@
                 </div>
                 <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
-            
+            </div>
+<div class="week-row">
             <div class="day-card empty" data-date="2026-12-21">
                 <div class="day-header">
                     <span class="day-num">21</span>
@@ -1098,7 +1201,8 @@
                 </div>
                 <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
-            
+            </div>
+<div class="week-row">
             <div class="day-card empty" data-date="2026-12-28">
                 <div class="day-header">
                     <span class="day-num">28</span>
@@ -1130,14 +1234,16 @@
                 </div>
                 <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
-            </div></div>
+            <div class="spacer"></div><div class="spacer"></div><div class="spacer"></div></div>
+</div></div>
 
         <div class="month-block">
             <div class="month-heading">
                 <h2>2027年 1月</h2>
             </div>
+            <div class="weekday-header"><div class="wd">月</div><div class="wd">火</div><div class="wd">水</div><div class="wd">木</div><div class="wd">金</div><div class="wd sat">土</div><div class="wd sun">日</div></div>
             <div class="day-grid">
-        
+        <div class="week-row"><div class="spacer"></div><div class="spacer"></div><div class="spacer"></div><div class="spacer"></div>
             <div class="day-card empty" data-date="2027-01-01">
                 <div class="day-header">
                     <span class="day-num">01</span>
@@ -1161,7 +1267,8 @@
                 </div>
                 <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
-            
+            </div>
+<div class="week-row">
             <div class="day-card empty" data-date="2027-01-04">
                 <div class="day-header">
                     <span class="day-num">04</span>
@@ -1177,7 +1284,8 @@
                 </div>
                 <div class="slots"><span class="no-slot">空きなし</span></div>
             </div>
-            </div></div>
+            <div class="spacer"></div><div class="spacer"></div><div class="spacer"></div><div class="spacer"></div><div class="spacer"></div></div>
+</div></div>
 
 
     </main>
@@ -1193,18 +1301,17 @@
         var pad = function (n) { return String(n).padStart(2, "0"); };
         var today = jst.getFullYear() + "-" + pad(jst.getMonth() + 1) + "-" + pad(jst.getDate());
 
-        // 当日を含む過去日のカードを非表示
+        // 当日を含む過去日のカードを非表示（位置は保つ）
         document.querySelectorAll(".day-card[data-date]").forEach(function (card) {
-            if (card.dataset.date <= today) card.style.display = "none";
+            if (card.dataset.date <= today) card.classList.add("past");
         });
 
-        // 表示できるカードが無くなった月ブロックも非表示
+        // 表示できるカードが無い週・月は丸ごと非表示
+        document.querySelectorAll(".week-row").forEach(function (row) {
+            if (!row.querySelector(".day-card:not(.past)")) row.classList.add("all-past");
+        });
         document.querySelectorAll(".month-block").forEach(function (block) {
-            var anyVisible = Array.prototype.some.call(
-                block.querySelectorAll(".day-card"),
-                function (c) { return c.style.display !== "none"; }
-            );
-            if (!anyVisible) block.style.display = "none";
+            if (!block.querySelector(".day-card:not(.past)")) block.style.display = "none";
         });
     })();
     </script>
